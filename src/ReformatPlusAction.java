@@ -94,6 +94,7 @@ public class ReformatPlusAction extends ReformatCodeAction {
     private int matcherStartIndexOfVue(String text) {
         Pattern pattern = Pattern.compile(VUE_STYLE_PREFIX);
         Matcher matcher = pattern.matcher(text);
+
         if (matcher.find()) {
             return matcher.start();
         }
@@ -102,12 +103,40 @@ public class ReformatPlusAction extends ReformatCodeAction {
     }
 
     /**
+     * 匹配并清理所有符合要求的冒号
+     * 符合要求：height: 300px
+     * 不符合要求: .className:hover
+     */
+    private String matcherReplaceAllEffectiveColons(String text) {
+        Pattern pattern = Pattern.compile("\\w+(:)\\s+");
+        Matcher matcher = pattern.matcher(text);
+
+        // 匹配成功
+        if (matcher.find()) {
+            // 获取当前匹配的内容
+            String group = matcher.group();
+            // 将匹配内容的多余冒号移除
+            String cleanlyGroup = group.replace(":", "");
+
+            // 使用清理后的内容替换之前的内容
+            text = text.replace(group, cleanlyGroup);
+
+            // 传入清理后的总内容，继续匹配
+            return matcherReplaceAllEffectiveColons(text);
+        }
+
+        // 匹配失败，返回清理结果
+        return text;
+    }
+
+    /**
      * Stylus的通用优化风格
      */
     private String generateOptimizationStyleOfStylus(String text) {
         // 移除冒号
         if (text.contains(":")) {
-            text = text.replace(":", "");
+            // 匹配并清理所有符合要求的冒号
+            text = matcherReplaceAllEffectiveColons(text);
         }
 
         // 移除分号
