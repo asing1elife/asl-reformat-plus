@@ -1,0 +1,67 @@
+<idea-plugin>
+  <id>com.asing1elife.reformat.plus</id>
+  <name>Reformat Code Plus</name>
+  <version>1.1</version>
+  <vendor email="asing1elife@139.com" url="http://www.asing1elife.com">asing1elife's station</vendor>
+
+  <description><![CDATA[
+      <h2>优化IDE原生的格式化风格</h2>
+      <p>本插件是在IDEA原有的Reformat Code基础上进行优化</p>
+      <p>所以可以将默认的格式化快捷键直接切换到本插件上，可以获得更好的使用体验</p>
+      <br />
+      <p>目前支持以下功能</p>
+      <br />
+      <h3>Stylus</h3>
+      <ol>
+        <li>自动移除冒号和分号</li>
+        <li>自动移除左右大括号</li>
+        <li>对于 *.vue 文件内部的Stylus样式内容也遵循上述优化风格</li>
+        <ul>
+          <li>Vue中代码有效性检测需要<code>&lt;style&gt;</code>标签上包含<b>lang="stylus"</b></li>
+        </ul>
+      </ol>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      <h2>v1.1</h2>
+      <h3>Stylus</h3>
+      <ol>
+        <li>...</li>
+        <li>对于 *.vue 文件内部的Stylus样式内容也遵循上述优化风格</li>
+      </ol>
+      <br/>
+      <h2>v1.0</h2>
+      <h3>Stylus</h3>
+      <ol>
+        <li>自动移除冒号和分号</li>
+        <li>自动移除左右大括号</li>
+      </ol>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="ReformatPlusAction.ReformatPlus" class="ReformatPlusAction" text="Reformat Code Plus" description="Reformat Code Plus">
+      <add-to-group group-id="CodeMenu" anchor="after" relative-to-action="CodeFormatGroup"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="meta alt L"/>
+    </action>
+    <action id="ReformatPlusAction.ReformatPlus" class="ReformatPlusAction" text="Reformat Code Plus" description="Reformat Code Plus">
+      <add-to-group group-id="CodeMenu" anchor="after" relative-to-action="CodeFormatGroup"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="meta alt L"/>
+    </action>
+  </actions>
+
+</idea-plugin>
