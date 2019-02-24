@@ -58,10 +58,6 @@
       <add-to-group group-id="CodeMenu" anchor="after" relative-to-action="CodeFormatGroup"/>
       <keyboard-shortcut keymap="$default" first-keystroke="meta alt L"/>
     </action>
-    <action id="ReformatPlusAction.ReformatPlus" class="ReformatPlusAction" text="Reformat Code Plus" description="Reformat Code Plus">
-      <add-to-group group-id="CodeMenu" anchor="after" relative-to-action="CodeFormatGroup"/>
-      <keyboard-shortcut keymap="$default" first-keystroke="meta alt L"/>
-    </action>
   </actions>
 
 </idea-plugin>
