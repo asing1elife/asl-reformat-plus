@@ -9,10 +9,14 @@ import com.intellij.openapi.vfs.VirtualFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author asing1elife
+ */
 public class ReformatPlusAction extends ReformatCodeAction {
 
-    public static final String VUE_STYLE_PREFIX = "(<style).+(lang=\"stylus\").*(>)";
-    public static final String VUE_STYLE_SUFFIX = "</style>";
+    private final String VUE_STYLE_PREFIX = "(<style).+(lang=\"stylus\").*(>)";
+    private final String VUE_STYLE_SUFFIX = "</style>";
+    private final String EXPRESSION_COLON = "\\w+(:)\\s+";
 
     @Override
     public void actionPerformed(AnActionEvent e) {
@@ -108,7 +112,7 @@ public class ReformatPlusAction extends ReformatCodeAction {
      * 不符合要求: .className:hover
      */
     private String matcherReplaceAllEffectiveColons(String text) {
-        Pattern pattern = Pattern.compile("\\w+(:)\\s+");
+        Pattern pattern = Pattern.compile(EXPRESSION_COLON);
         Matcher matcher = pattern.matcher(text);
 
         // 匹配成功
